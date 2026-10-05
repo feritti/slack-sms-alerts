@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMS Alert Settings (Opt-In) — Pete Ryan Slack Alerts</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.5; max-width: 40rem; margin: 2rem auto; padding: 0 1.25rem; color: #1a1a1a; background: #f6f7f9; }
+    .card { background: #fff; border: 1px solid #dde1e6; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.25rem; }
+    h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+    h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
+    .meta { color: #555; font-size: .95rem; margin: 0 0 1rem; }
+    .note { font-size: .9rem; color: #444; background: #eef3fb; border-left: 4px solid #0b57d0; padding: .6rem .8rem; border-radius: 4px; }
+    label.field { display: block; font-weight: 600; margin: 1rem 0 .35rem; }
+    input[type=tel] { width: 100%; box-sizing: border-box; font-size: 1rem; padding: .6rem .7rem; border: 1px solid #b8bfc7; border-radius: 6px; }
+    .toggle { margin: .9rem 0; }
+    .consent { display: flex; gap: .65rem; align-items: flex-start; margin: 1.1rem 0; padding: .85rem; border: 1px solid #dde1e6; border-radius: 8px; background: #fafbfc; }
+    .consent input { margin-top: .3rem; width: 1.1rem; height: 1.1rem; flex: none; }
+    .consent span { font-size: .95rem; }
+    button { font-size: 1rem; font-weight: 600; padding: .65rem 1.2rem; border: 0; border-radius: 6px; background: #0b57d0; color: #fff; cursor: pointer; }
+    button:disabled { background: #9aa7b8; cursor: not-allowed; }
+    .sms { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9rem; background: #e9f7ee; border: 1px solid #bfe3cb; border-radius: 8px; padding: .75rem; }
+    a { color: #0b57d0; }
+    ul { padding-left: 1.2rem; }
+    #done { display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Pete Ryan Slack Alerts</h1>
+    <p class="meta">SMS Alert Settings · Operated by Pete Ryan (Sole Proprietor) · Austin, TX</p>
+    <p class="note">This is a public copy of the SMS opt-in screen inside the Pete Ryan Slack Alerts app (the real settings screen is only visible after signing in to the app). It is posted here so carriers and reviewers can see the exact opt-in form and disclosures. Submitting this public copy does not enroll a phone number or send any text message.</p>
+  </div>
+
+  <form class="card" id="optin" onsubmit="event.preventDefault(); document.getElementById('done').style.display='block'; this.querySelector('button').disabled=true;">
+    <h2>Text me about Slack messages</h2>
+    <p>Pete Ryan Slack Alerts watches the Slack account you connected to this app. When that account gets a new <strong>direct message</strong> or <strong>@mention</strong>, the app texts you a short alert so you know someone is trying to reach you when you are away from your computer.</p>
+
+    <div class="toggle">
+      <label><input type="checkbox" name="dm"> Alert me about new Slack direct messages</label><br>
+      <label><input type="checkbox" name="mention"> Alert me about new @mentions</label>
+    </div>
+
+    <label class="field" for="phone">Mobile phone number</label>
+    <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel" required>
+
+    <div class="consent">
+      <input type="checkbox" id="smsConsent" name="smsConsent" required onchange="document.getElementById('submitBtn').disabled=!this.checked">
+      <span><label for="smsConsent">I agree to receive recurring automated text messages from <strong>Pete Ryan Slack Alerts</strong> at the mobile number above, alerting me to new Slack direct messages and @mentions. Message frequency varies with Slack activity. Msg &amp; data rates may apply. Reply <strong>HELP</strong> for help or <strong>STOP</strong> to cancel at any time. Consent is not a condition of using the app. Messages are sent from +1 (512) 960-3711. See our <a href="terms.html">Terms &amp; Conditions</a> and <a href="privacy.html">Privacy Policy</a>. Your mobile number is never shared with third parties or affiliates for marketing or promotional purposes.</label></span>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Yes, enable SMS alerts</button>
+
+    <div id="done" style="margin-top:1rem">
+      <p><strong>SMS alerts enabled.</strong> A confirmation text is on its way.</p>
+    </div>
+  </form>
+
+  <div class="card">
+    <h2>What happens after you opt in</h2>
+    <p>Right after you check the box and tap <em>Yes, enable SMS alerts</em>, the app sends this confirmation text from +1 (512) 960-3711:</p>
+    <p class="sms">Pete Ryan Slack Alerts: You're subscribed to SMS alerts for new Slack DMs and @mentions. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel.</p>
+    <p>Example alert:</p>
+    <p class="sms">Pete Ryan Slack Alerts: New Slack DM from [Sender Name]: "[First 100 characters of message]". Reply STOP to opt out.</p>
+    <ul>
+      <li><strong>Program:</strong> Pete Ryan Slack Alerts — one-way, automated notifications about Slack DMs and @mentions. No marketing or promotional messages.</li>
+      <li><strong>Who receives texts:</strong> only the person who connected their own Slack account and opted in on this screen. This is a single-user app; no lists are bought, shared, or imported.</li>
+      <li><strong>Frequency:</strong> varies with Slack activity.</li>
+      <li><strong>Cost:</strong> Msg &amp; data rates may apply.</li>
+      <li><strong>Opt out:</strong> reply STOP (or UNSUBSCRIBE, CANCEL, END, QUIT) to stop all texts. Reply START to resubscribe.</li>
+      <li><strong>Help:</strong> reply HELP or email <a href="mailto:pete@feritti.vc">pete@feritti.vc</a>.</li>
+      <li>Carriers are not liable for delayed or undelivered messages.</li>
+    </ul>
+    <p><a href="terms.html">Terms &amp; Conditions</a> · <a href="privacy.html">Privacy Policy</a> · <a href="index.html">Home</a></p>
+  </div>
+</body>
+</html>
